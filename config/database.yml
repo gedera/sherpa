@@ -2,6 +2,28 @@ defaults: &defaults
   adapter: mysql2
   encoding: utf8
   pool: 5
+  username: <%= ENV['DB_USER'] || 'root' %>
+  password: <%= ENV['DB_PASS'] || 'root' %>
+  host:     <%= ENV['DB_HOST'] || 'localhost' %>
+  port:     <%= ENV['DB_PORT'] || '3306' %>
+
+development:
+  <<: *defaults
+  database: <%= ENV['DB_NAME'] || 'sherpa_development' %>
+
+test:
+  <<: *defaults
+  database: <%= ENV['DB_NAME'] || 'sherpa_test' %>
+
+production:
+  <<: *defaults
+  database: <%= ENV['DB_NAME'] || 'sherpa_production' %>
+
+
+
+defaults: &defaults
+  encoding: utf8
+  pool: 5
   username: root
   password: root
   host: 127.0.0.1

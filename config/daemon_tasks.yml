@@ -1,0 +1,15 @@
+# level_log reference:
+# Logger::DEBUG => 0
+# Logger::INFO  => 1
+# Logger::WARN  => 2
+# Logger::ERROR => 3
+# Logger::FATAL => 4
+
+DaemonTvShow:
+  name: 'tv_show'
+  enabled: true
+  priority: -2
+  frecuency: 4.hours
+  level_log: 0
+  exec_as_process: true
+  start_now: true

@@ -10,6 +10,7 @@ gem 'rails', '~> 5.2'
 gem 'mysql2', '~> 0.5.2'
 gem 'nori'
 gem 'nokogiri'
+gem 'posix-spawn'
 #gem 'paper_trail'
 
 group :development, :test do

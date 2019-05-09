@@ -1,10 +1,5 @@
 class TvShow < ApplicationRecord
 
-  SERIES_YAML = YAML::safe_load(File.open((Rails.root + 'series.yml').to_s).read)
-  TORRENT_DIR = '/tmp/torrents/'
-  DOWNLOADS_DIR = '/tmp/downloads/'
-  TV_SHOW_DIR = '/tmp/tv_shows/'
-
   scope :not_moved, -> { where(moved_to_media: false) }
 
   def download_torrent
