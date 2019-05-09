@@ -50,26 +50,6 @@ class TvShow < ApplicationRecord
     end
   end
 
-  # TvShow.downloads
-  def self.downloads
-    objs = []
-    Rss::Ezrss.items.each do |serie|
-      full_serie_name = serie['torrent:fileName']
-      match = TvShow.match_in_setting(full_serie_name)
-
-      next unless match.present?
-      tv_show = TvShow.find_or_initialize_by(match)
-      objs << tv_show
-
-      if tv_show.new_record?
-        tv_show.file_name = full_serie_name
-        tv_show.save
-        tv_show.download_torrent
-      end
-    end
-    objs
-  end
-
   def self.parse(name)
     # result[0] # same as full_serie_name
     # result[1] # serie name
@@ -88,13 +68,14 @@ class TvShow < ApplicationRecord
     { status: false }
   end
 
-  def self.match_in_setting(name)
+
+  def self.match_in_setting(name, series_setting)
     result = nil
     tv_show_parsed = TvShow.parse(name)
 
     return unless tv_show_parsed[:status]
 
-    SERIES_YAML.values.each do |setting|
+    series_setting.values.each do |setting|
       setting['series'].each do |title|
         title_with_dot = title.tr(' ', '.')
         if title_with_dot.casecmp(tv_show_parsed[:response][:title]).zero?
