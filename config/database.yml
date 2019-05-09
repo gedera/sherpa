@@ -1,0 +1,21 @@
+defaults: &defaults
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3306
+
+development:
+  <<: *defaults
+  database: sherpa_development
+
+test:
+  <<: *defaults
+  database: sherpa_test
+
+production:
+  <<: *defaults
+  database: sherpa_production
+
