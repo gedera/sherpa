@@ -123,15 +123,14 @@ class SherpaLogger
 
   def error(exception, caller_number=1)
     progname = prog_method_name(caller[caller_number])
-    exc = if exception.respond_to?(:backtrace)  # backtrace is only for exceptions
-            # ::Sherpa::Sentry.notify(exception) rescue nil # si explota no calienta
-            ::Exception.new(exception)
-            exception
-          else
-            ::Exception.new(exception)
-          end
+    # exc = if exception.respond_to?(:backtrace)  # backtrace is only for exceptions
+    #         # ::Sherpa::Sentry.notify(exception) rescue nil # si explota no calienta
+    #         ::Exception.new(exception)
+    #       else
+    #         ::Exception.new(exception)
+    #       end
 
-    log.error(progname) { [exc.message, exc.verbose_backtrace].compact.join("\n") }
+    log.error(progname) { [exception.message, (exception.verbose_backtrace rescue '')].compact.join("\n") }
   end
 
   alias_method :fatal, :error

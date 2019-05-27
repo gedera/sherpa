@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2019_05_06_213639) do
     t.string "date"
     t.string "quality"
     t.string "rss"
+    t.boolean "moved_to_media", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["moved_to_media"], name: "index_tv_shows_on_moved_to_media"
   end
 
 end

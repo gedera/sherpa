@@ -78,8 +78,7 @@ class TvShow < ApplicationRecord
     series_setting.values.each do |setting|
       setting['series'].each do |title|
         title_with_dot = title.tr(' ', '.')
-        if title_with_dot.casecmp(tv_show_parsed[:response][:title]).zero?
-          TvShow.check_quality?(name, setting['quality'])
+        if title_with_dot.casecmp(tv_show_parsed[:response][:title]).zero? && TvShow.check_quality?(name, setting['quality'])
           return {
             title: title_with_dot,
             quality: setting['quality'],

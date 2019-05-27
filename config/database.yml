@@ -4,7 +4,7 @@ defaults: &defaults
   pool: 5
   username: <%= ENV['DB_USER'] || 'root' %>
   password: <%= ENV['DB_PASS'] || 'root' %>
-  host:     <%= ENV['DB_HOST'] || 'localhost' %>
+  host:     <%= ENV['DB_HOST'] || '127.0.0.1' %>
   port:     <%= ENV['DB_PORT'] || '3306' %>
 
 development:
@@ -18,26 +18,3 @@ test:
 production:
   <<: *defaults
   database: <%= ENV['DB_NAME'] || 'sherpa_production' %>
-
-
-
-defaults: &defaults
-  encoding: utf8
-  pool: 5
-  username: root
-  password: root
-  host: 127.0.0.1
-  port: 3306
-
-development:
-  <<: *defaults
-  database: sherpa_development
-
-test:
-  <<: *defaults
-  database: sherpa_test
-
-production:
-  <<: *defaults
-  database: sherpa_production
-
