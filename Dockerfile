@@ -9,8 +9,8 @@ RUN chmod 777 "$BUNDLE_BIN"
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 
 RUN apk --update add --virtual build-dependencies \
-    build-base mariadb-dev git openssh && \
-    apk --update add bash tzdata nano && \
+    build-base mysql-dev mariadb-dev git openssh && \
+    apk --update add bash tzdata nano mariadb-connector-c curl && \
     gem install bundler
 
 WORKDIR /usr/src/app
@@ -22,4 +22,4 @@ RUN bundle install --deployment --jobs 5 \
 
 ADD . ./
 
-CMD ["rails daemon:start"]
+CMD ["bin/rails", "daemon:start"]
