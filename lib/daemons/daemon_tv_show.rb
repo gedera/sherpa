@@ -1,4 +1,4 @@
-class DaemonTvShow < ::Sherpa::DaemonTask
+class DaemonTvShow < ::DaemonTask
   def initialize(setting)
     super(setting)
   end

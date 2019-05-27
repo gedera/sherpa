@@ -14,7 +14,7 @@ module Sherpa
     config.api_only = true
     config.load_defaults 5.2
     config.time_zone = 'UTC'
-    config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib').to_s
     config.autoload_paths += Dir[Rails.root.join('lib', '{daemons/}')]
     # config.eager_load_paths << Rails.root.join('lib/adapters')
     # config.logger = WisproUtils::Logger.new(name: 'sherpa')
