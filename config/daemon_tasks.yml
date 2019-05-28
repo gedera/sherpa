@@ -11,5 +11,5 @@ DaemonTvShow:
   priority: -2
   frecuency: 4.hours
   level_log: 0
-  exec_as_process: false
+  exec_as_process: true
   start_now: true
