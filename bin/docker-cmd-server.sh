@@ -20,7 +20,5 @@ rails db:migrate
 
 rails db:seed
 
-cp -Rf public/assets/* public/assets_mounted/
-
 bundle exec rails daemon:start &
 wait $!

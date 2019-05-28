@@ -91,7 +91,7 @@ services:
     #   - mysql
   # docker run --name sherpa -d --network host -v /home/ga6ix/src/sherpa/data/torrents/:/usr/src/app/data/torrents -v /home/ga6ix/src/sherpa/data/downloads/:/usr/src/app/data/downloads -v /home/ga6ix/src/sherpa/data/tv_shows/:/usr/src/app/data/tv_shows -v /home/ga6ix/src/sherpa/data/settings/series.yml:/usr/src/app/data/settings/series.yml -e RAILS_ENV=production -e LEVEL_LOG=debug -e LOGS_TO_STDOUT=1 -e DB_NAME=sherpa --restart=always ga6ix/sherpa "rails db:create db:migrate"
   sherpa_migrator:
-    image: 'sherpa'
+    image: 'ga6ix/sherpa'
     container_name: 'sherpa'
     depends_on:
       - mysql
