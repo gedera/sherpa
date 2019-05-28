@@ -22,5 +22,5 @@ rails db:seed
 
 cp -Rf public/assets/* public/assets_mounted/
 
-bundle exec rails server &
+bundle exec rails daemon:start &
 wait $!
