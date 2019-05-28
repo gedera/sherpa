@@ -22,4 +22,4 @@ RUN bundle install --deployment --jobs 5 \
 
 ADD . ./
 
-CMD ["bin/rails", "daemon:start"]
+CMD ["/usr/src/app/bin/docker-cmd-server.sh"]
