@@ -22,4 +22,4 @@ RUN bundle install --deployment --jobs 5 \
 
 ADD . ./
 
-CMD ["/usr/src/app/bin/rails db:create db:migrate daemon:start"]
+CMD ["/usr/src/app/bin/rails db:create db:migrate; /usr/src/app/bin/rails daemon:start"]
