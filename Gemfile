@@ -6,8 +6,8 @@ source 'https://rubygems.org'
 # end
 
 gem 'rake'
-gem 'rails', '~> 5.2'
-gem 'mysql2', '~> 0.5.2'
+gem 'rails', '~> 6.0.0'
+gem 'pg', '~> 1.1.4'
 gem 'nori'
 gem 'nokogiri'
 gem 'posix-spawn'
@@ -23,3 +23,4 @@ end
 
 # alpine dependency
 gem 'tzinfo-data'
+gem 'telegram-bot-ruby', '~> 0.11.0'

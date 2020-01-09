@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine3.9
+FROM ruby:2.6.3-alpine3.8
 
 # Patch to get global bins
 ENV BUNDLE_BIN="$GEM_HOME/bin"
@@ -22,4 +22,4 @@ RUN bundle install --deployment --jobs 5 \
 
 ADD . ./
 
-CMD ["/usr/src/app/bin/rails db:create db:migrate; /usr/src/app/bin/rails daemon:start"]
+CMD ["/usr/src/app/bin/docker-cmd-server.sh"]

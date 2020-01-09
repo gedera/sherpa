@@ -1,5 +1,4 @@
 module Downloader
-
   def self.get_http(name: file_name, rss: source)
     uri = URI.parse("https://zoink.ch/torrent/")
     request = Net::HTTP::Get.new("https://zoink.ch/torrent/" + "#{name}.torrent")

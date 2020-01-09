@@ -13,3 +13,11 @@ DaemonTvShow:
   level_log: 0
   exec_as_process: true
   start_now: true
+DaemonTelegramBot:
+  name: 'telegram_bot'
+  enabled: true
+  priority: -2
+  frecuency: 1.second
+  level_log: 0
+  exec_as_process: true
+  start_now: true

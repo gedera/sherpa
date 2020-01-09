@@ -1,20 +1,21 @@
-defaults: &defaults
-  adapter: mysql2
+db_defaults: &db_defaults
+  adapter: postgresql
   encoding: utf8
-  pool: 5
-  username: <%= ENV['DB_USER'] || 'root' %>
-  password: <%= ENV['DB_PASS'] || 'root' %>
-  host:     <%= ENV['DB_HOST'] || '127.0.0.1' %>
-  port:     <%= ENV['DB_PORT'] || '3306' %>
+  timeout: 5000
+  reconnect: false
+  pool: 20
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
-  <<: *defaults
-  database: <%= ENV['DB_NAME'] || 'sherpa_development' %>
-
-test:
-  <<: *defaults
-  database: <%= ENV['DB_NAME'] || 'sherpa_test' %>
+  <<: *db_defaults
 
 production:
-  <<: *defaults
-  database: <%= ENV['DB_NAME'] || 'sherpa_production' %>
+  <<: *db_defaults
+
+test:
+  <<: *db_defaults
+  database: <%= ENV.fetch('DB_NAME', 'core') + '_test' %>

@@ -29,6 +29,8 @@ class DaemonTvShow < ::DaemonTask
         tv_show.save
         tv_show.download_torrent
         @daemon_logger.info("Download #{tv_show.file_name} in #{tv_show.torrent_file}")
+        ::TelegramBot.send_message(TELEGRAM_USER_ID, "Download #{tv_show.file_name}")
+        SystemUtils.move_torrents("#{tv_show.file_name}.torrent")
       else
         @daemon_logger.debug("Already Download: #{tv_show.file_name}")
       end
