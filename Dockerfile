@@ -6,12 +6,10 @@ ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$BUNDLE_BIN"
 RUN chmod 777 "$BUNDLE_BIN"
 
-RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
-
-RUN apk --update add --virtual build-dependencies \
-    build-base mysql-dev mariadb-dev git openssh && \
-    apk --update add bash tzdata nano mariadb-connector-c curl && \
-    gem install bundler
+RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc \
+  && apk --update add --virtual build-dependencies build-base postgresql-dev \
+  && apk --update add libpq bash openssl zlib tzdata git file \
+  && gem install bundler
 
 WORKDIR /usr/src/app
 
