@@ -29,6 +29,6 @@ module SystemUtils
     file_path = "#{TORRENT_DIR}#{file_name}"
     system("scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
     File.delete(file_path) if File.exist?(file_path)
-    ::TelegramBot.send_message(TELEGRAM_USER_ID, "Sent to rtorrent #{file_name}")
+    ::TelegramBot.send_message(TELEGRAM_USER_ID, "scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
   end
 end
