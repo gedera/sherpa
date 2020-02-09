@@ -26,7 +26,7 @@ module SystemUtils
 
   # SystemUtils.move_torrents
   def self.move_torrents(file_name)
-    file_path = "#{TORRENT_DIR}#{file_name}"
+    file_path = "#{TORRENT_DIR}'#{file_name}'"
     command = Command.new("scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
     command.exec
     if command.to_log[:status].zero?
