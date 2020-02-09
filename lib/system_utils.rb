@@ -27,8 +27,13 @@ module SystemUtils
   # SystemUtils.move_torrents
   def self.move_torrents(file_name)
     file_path = "#{TORRENT_DIR}#{file_name}"
-    system("scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
-    File.delete(file_path) if File.exist?(file_path)
-    ::TelegramBot.send_message(TELEGRAM_USER_ID, "scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
+    command = Command.new("scp -P #{RTORRENT_PORT} #{file_path} #{RTORRENT_TORRENT_DIR}")
+    command.exec
+    if command.to_log[:status].zero?
+      File.delete(file_path) if File.exist?(file_path)
+      ::TelegramBot.send_message(TELEGRAM_USER_ID, "Moved to rtorrent")
+    else
+      ::TelegramBot.send_message(TELEGRAM_USER_ID, "#{command.to_log[:stderr]}")
+    end
   end
 end
