@@ -32,15 +32,16 @@ module TelegramBot
           bot.api.send_message(chat_id: message.chat.id, text: "Algun dia estará implementado")
         else
           if message.document.present?
-            TelegramBot.download_document(TELEGRAM_BOT_TOKEN, message.document.file_name, message.document.file_id)
             case message.caption
             when 'torrent'
-              SystemUtils.move_torrents(message.document.file_name)
+              TelegramBot.download_document(TELEGRAM_BOT_TOKEN, message.document.file_name, message.document.file_id)
+              # SystemUtils.move_torrents(message.document.file_name)
             when 'movie'
+              TelegramBot.download_document(TELEGRAM_BOT_TOKEN, message.document.file_name, message.document.file_id)
               movie_attrs = Movie.parse(message.document.file_name)
               movie = Movie.create!(movie_attrs.merge(telegram_id: message.document.file_id))
-              resp = SystemUtils.move_torrents(message.document.file_name)
-              movie.downloading! if resp[:status].zero?
+              # resp = SystemUtils.move_torrents(message.document.file_name)
+              movie.downloading! # if resp[:status].zero?
             end
           else
             bot.api.send_message(chat_id: message.chat.id, text: "Nada para bajar")
