@@ -35,5 +35,6 @@ module SystemUtils
     else
       ::TelegramBot.send_message(TELEGRAM_USER_ID, "#{command.to_log[:stderr]}")
     end
+    command.to_log
   end
 end

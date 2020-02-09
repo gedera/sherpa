@@ -64,7 +64,7 @@ class TvShow < ApplicationRecord
            end
     { status: true, response: resp }
   rescue => e
-    puts "Cant parse #{name}"
+    Rails.logger.error(e)
     { status: false }
   end
 
