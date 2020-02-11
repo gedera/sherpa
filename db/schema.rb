@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_213639) do
+ActiveRecord::Schema.define(version: 2020_02_09_171355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "file_name"
+    t.integer "year"
+    t.string "quality"
+    t.integer "state"
+    t.string "telegram_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tv_shows", force: :cascade do |t|
     t.string "title"
