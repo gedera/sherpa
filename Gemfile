@@ -9,7 +9,7 @@ gem 'rake'
 gem 'rails', '~> 6.0.0'
 gem 'pg', '~> 1.1.4'
 gem 'nori', '~> 2.6.0'
-gem 'nokogiri', '~> 1.10.7'
+gem 'nokogiri', '~> 1.13.2'
 gem 'posix-spawn'
 #gem 'paper_trail'
 
